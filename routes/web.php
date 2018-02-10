@@ -17,7 +17,7 @@ Route::get('/about', 'AboutController@index');
 
 Route::get('/blog', 'BlogController@index');
 
-Route::get('/contact', 'ContactController@index');
+Route::any('/contact', 'ContactController@index');
 
 Route::get('/portfolio', 'PortfolioController@index');
 
