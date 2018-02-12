@@ -8,6 +8,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('portfolio');
+        $date = ['title' => 'Сайты-визитки. Портфолио'];
+        return view('portfolio', $date);
     }
 }

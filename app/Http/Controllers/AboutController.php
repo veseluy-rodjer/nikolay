@@ -8,6 +8,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return view('about');
+        $date = ['title' => 'Сайты-визитки. Обо мне'];
+        return view('about', $date);
     }
 }

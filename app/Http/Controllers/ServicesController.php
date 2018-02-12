@@ -8,6 +8,7 @@ class ServicesController extends Controller
 {
     public function index()
     {
-        return view('services');
+        $date = ['title' => 'Сайты-визитки. Сервис'];
+        return view('services', $date);
     }
 }

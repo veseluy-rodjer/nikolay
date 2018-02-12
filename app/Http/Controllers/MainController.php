@@ -8,6 +8,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('main');
+        $date = ['title' => 'Сайты-визитки. Главная'];
+        return view('main', $date);
     }
 }

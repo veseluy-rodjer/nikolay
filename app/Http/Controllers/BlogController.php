@@ -8,6 +8,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('blog');
+        $date = ['title' => 'Сайты-визитки. Блог'];
+        return view('blog', $date);
     }
 }

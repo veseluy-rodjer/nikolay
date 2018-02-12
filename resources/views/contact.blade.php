@@ -52,5 +52,5 @@
     <!--/.container-->
   </section>
   <!--/#contact-page-->
-{{ var_dump($name) }}
+
 @endsection('content')
