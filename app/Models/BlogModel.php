@@ -51,13 +51,13 @@ class BlogModel extends Model
     {
         $del = BlogModel::find($id);
         if (!empty($del->picture)) {
-            $count = BlogModel::where('picture', $del->picture)->count();
+            $count = $del::where('picture', $del->picture)->count();
             if ($count == 1) {
                 $path = explode('/', $del->picture);
                 Storage::delete('public/blog/' . $path[5]);
             }
         }
-        
+        $del->comments()->delete();
         $del->delete();
     }
     
