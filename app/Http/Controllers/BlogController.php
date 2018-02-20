@@ -92,7 +92,7 @@ class BlogController extends Controller
     public function delComment($id)
     {
         CommentModel::delComment($id);
-        return redirect('blog/more/' . $id);
+        return back();
     }
 
 }

@@ -24,7 +24,7 @@ class CommentModel extends Model
     
     public function scopeDelComment($quest, $id)
     {
-        $del = ComentModel::find($id);
+        $del = CommentModel::find($id);
         $del->delete();
     }
     

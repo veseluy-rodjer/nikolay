@@ -57,6 +57,7 @@ class BlogModel extends Model
                 Storage::delete('public/blog/' . $path[5]);
             }
         }
+        
         $del->delete();
     }
     

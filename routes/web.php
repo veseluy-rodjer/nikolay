@@ -38,3 +38,5 @@ Route::get('/blog/more/{id}', 'BlogController@more');
 Route::get('/blog/addComment/{id}', 'BlogController@addCommentGet');
 
 Route::post('/blog/addComment/{id}', 'BlogController@addCommentPost');
+
+Route::get('/blog/delComment/{id}', 'BlogController@delComment');
