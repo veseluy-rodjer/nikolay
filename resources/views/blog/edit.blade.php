@@ -1,5 +1,5 @@
-@extends('layouts/template')
-@section('content')
+@extends('blog/more')
+@section('more')
 
 <br>
 <br>
@@ -14,14 +14,15 @@
     </ul>
   </div>
 @endif
+<p><input type="submit" value="Удалить фото" href="blog/delPicture/{{  $more->id  }}"></p>
 <form enctype="multipart/form-data" action="" method="post">
 {{ csrf_field() }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
 <p>Загрузить фото: <input name="picture" type="file"></p>
 
-<p>Тема: <textarea rows="3" cols="45" wrap="soft" name="topic" required>{{ $edit->topic }}</textarea></p>
-<p>Текст: <textarea rows="10" cols="45" wrap="soft" name="tell" required>{{ $edit->tell }}</textarea></p>
+<p>Тема: <textarea rows="3" cols="45" wrap="soft" name="topic" required>{{ $more->topic }}</textarea></p>
+<p>Текст: <textarea rows="10" cols="45" wrap="soft" name="tell" required>{{ $more->tell }}</textarea></p>
 <p><input type="submit"></p>
 </form>
 
-@endsection('content')
+@endsection('more')

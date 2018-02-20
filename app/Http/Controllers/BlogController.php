@@ -17,7 +17,7 @@ class BlogController extends Controller
     
     public function __construct()
     {
-        $this->middleware('checkBlog')->only('edit', 'del', 'more', 'addCommentPost');
+        $this->middleware('checkBlog')->only('del');
     }
 
     public function index()
@@ -46,8 +46,9 @@ class BlogController extends Controller
 
     public function editGet($id)
     {
-        $edit = BlogModel::editGet($id);
-        $date = ['title' => 'Сайты-визитки. Блог', 'edit' => $edit];
+        $more = BlogModel::editGet($id);
+        $comments = CommentModel::listComments($id);
+        $date = ['title' => 'Сайты-визитки. Блог', 'more' => $more, 'comments' => $comments];
         return view('blog/edit', $date);
 
     }
@@ -68,6 +69,13 @@ class BlogController extends Controller
         BlogModel::del($id);
         return redirect('blog');
     }
+
+    public function delPicture($id)
+    {
+        BlogModel::del($id);
+        return redirect('blog');
+    }
+
 
     public function more($id)
     {

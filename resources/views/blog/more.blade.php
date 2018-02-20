@@ -30,11 +30,13 @@
 
               <div class="col-xs-12 col-sm-10 blog-content">
                 <a href="#"><img class="img-responsive img-blog" src={{ $more->picture }} width="100%" alt="" /></a>
+@yield('more')
+@if(Request::is('blog/more/*'))                
                 <h4>{{ $more->topic }}</h4>
                 <p>{{ $more->tell }}</p>
                 <a class="btn btn-primary readmore" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
               </div>
-              
+@endif              
               <div class="col-xs-12 col-sm-10 blog-content">
                 <h3>Комментарии</h3>
 
