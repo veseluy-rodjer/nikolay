@@ -17,8 +17,24 @@ Route::get('/about', 'AboutController@index');
 
 Route::get('/blog', 'BlogController@index');
 
-Route::any('/contact', 'ContactController@index');
+Route::match(['get', 'post'], '/contact', 'ContactController@index');
 
 Route::get('/portfolio', 'PortfolioController@index');
 
 Route::get('/services', 'ServicesController@index');
+
+Route::get('/blog/adding', 'BlogController@addingGet');
+
+Route::post('/blog/adding', 'BlogController@addingPost');
+
+Route::get('/blog/edit/{id}', 'BlogController@editGet');
+
+Route::post('/blog/edit/{id}', 'BlogController@editPost');
+
+Route::get('/blog/del/{id}', 'BlogController@del');
+
+Route::get('/blog/more/{id}', 'BlogController@more');
+
+Route::get('/blog/addComment/{id}', 'BlogController@addCommentGet');
+
+Route::post('/blog/addComment/{id}', 'BlogController@addCommentPost');

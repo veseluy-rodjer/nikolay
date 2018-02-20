@@ -5,7 +5,7 @@
     <div class="container">
       <div class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li>Blog</li>
+        <li>Blog <a href="/blog/adding">&#160;Добавить запись</a></li>
       </div>
     </div>
   </div>
@@ -14,48 +14,33 @@
     <div class="blog">
       <div class="row">
         <div class="col-md-8">
+          
+@foreach ($listing as $i)
+          
           <div class="blog-item">
             <div class="row">
               <div class="col-xs-12 col-sm-2">
                 <div class="entry-meta">
-                  <span id="publish_date">07  JUNY</span>
-                  <span><i class="fa fa-user"></i> <a href="#">John Doe</a></span>
-                  <span><i class="fa fa-comment"></i> <a href="#">2 Comments</a></span>
-                  <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
+                  <span id="publish_date">{{ $i->created_at }}</span>
+                  <span><i class="fa fa-user"></i> <a href="/blog/edit/{{ $i->id }}">Изменить</a></span>
+                  <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $i->id }}">Удалить</a></span>
+                  <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
+                  <span><i class="fa fa-comment"></i> <a href="#">2 Комментарии</a></span>
+                  <span><i class="fa fa-heart"></i><a href="#">56 Понравилось</a></span>
                 </div>
               </div>
 
               <div class="col-xs-12 col-sm-10 blog-content">
-                <a href="#"><img class="img-responsive img-blog" src="{{ asset('images/blog/blog1.jpg') }}" width="100%" alt="" /></a>
-                <h4>Consequat bibendum quam liquam viverra</h4>
-                <p>Curabitur quis libero leo, pharetra mattis eros. Praesent consequat libero eget dolor convallis vel rhoncus magna scelerisque. Donec nisl ante, elementum eget posuere a, consectetur a metus. Proin a adipiscing sapien. Suspendisse vehicula
-                  porta lectus vel semper. Nullam sapien elit, lacinia eu tristique non.posuere at mi. Morbi at turpis id urna ullamcorper ullamcorper.</p>
-                <a class="btn btn-primary readmore">Read More <i class="fa fa-angle-right"></i></a>
+                <a ><img class="img-responsive img-blog" src={{ $i->picture }} width="100%" alt="" /></a>
+                <h4>{{ $i->topic }}</h4>
+                <p>{{ substr($i->tell, 0, 300) }}</p>
+                <a class="btn btn-primary readmore" href="/blog/more/{{ $i->id }}">Подробнее <i class="fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>
           <!--/.blog-item-->
 
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-sm-2">
-                <div class="entry-meta">
-                  <span id="publish_date">07  JUNY</span>
-                  <span><i class="fa fa-user"></i> <a href="#">John Doe</a></span>
-                  <span><i class="fa fa-comment"></i> <a href="#">2 Comments</a></span>
-                  <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
-                </div>
-              </div>
-              <div class="col-sm-10 blog-content">
-                <a href=""><img class="img-responsive img-blog" src="{{ asset('images/3.jpg') }}" width="100%" alt="" /></a>
-                <h4>Consequat bibendum quam liquam viverra</h4>
-                <p>Curabitur quis libero leo, pharetra mattis eros. Praesent consequat libero eget dolor convallis vel rhoncus magna scelerisque. Donec nisl ante, elementum eget posuere a, consectetur a metus. Proin a adipiscing sapien. Suspendisse vehicula
-                  porta lectus vel semper. Nullam sapien elit, lacinia eu tristique non.posuere at mi. Morbi at turpis id urna ullamcorper ullamcorper.</p>
-                <a class="btn btn-primary readmore">Read More <i class="fa fa-angle-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <!--/.blog-item-->
+@endforeach
 
           <ul class="pagination pagination-lg">
             <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>

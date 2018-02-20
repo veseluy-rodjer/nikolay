@@ -11,7 +11,7 @@
   </div>
 
   <div class="map">
-    <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
+    <div id="google-map" data-latitude="46.993790" data-longitude=" 32.002686"></div>
   </div>
 
   <section id="contact-page">
