@@ -1,5 +1,5 @@
-@extends('layouts/template')
-@section('content')
+@extends('blog/more')
+@section('more')
 
 <br>
 <br>
@@ -21,4 +21,4 @@
 <p><input type="submit"></p>
 </form>
 
-@endsection('content')
+@endsection('more')
