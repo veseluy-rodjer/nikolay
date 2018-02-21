@@ -33,13 +33,6 @@ class BlogModel extends Model
     {
         $edit = BlogModel::find($id);
         if (!empty($picture)) {
-            if (!empty($edit->picture)) {
-                $count = BlogModel::where('picture', $edit->picture)->count();
-                if ($count == 1) {
-                    $path = explode('/', $edit->picture);
-                    Storage::delete('public/blog/' . end($path));
-                }
-            }
             $edit->picture = $picture;
         }
         $edit->topic = $topic;
@@ -51,27 +44,22 @@ class BlogModel extends Model
     {
         $del = BlogModel::find($id);
         if (!empty($del->picture)) {
-            $count = $del::where('picture', $del->picture)->count();
-            if ($count == 1) {
-                $path = explode('/', $del->picture);
-                Storage::delete('public/blog/' . end($path));
-            }
-        }
-        $del->comments()->delete();
-        $del->delete();
+            $path = explode('/', $del->picture);
+            $path[1] = 'public';
+            Storage::delete(implode('/', $path));
+         }
+         $del->delete();         
     }
 
     public function scopeDelPicture($quest, $id)
     {
         $delPicture = BlogModel::find($id);
         if (!empty($delPicture->picture)) {
-            $count = $delPicture::where('picture', $delPicture->picture)->count();
-            if ($count == 1) {
-                $path = explode('/', $delPicture->picture);
-                Storage::delete('public/blog/' . end($path));
-            }
-            $delPicture->picture = null;
-            $delPicture->save();
+            $path = explode('/', $delPicture->picture);
+            $path[1] = 'public';
+            Storage::delete(implode('/', $path));
+        $delPicture->picture = null;
+        $delPicture->save();
         }
     }
 

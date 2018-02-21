@@ -14,7 +14,7 @@
     </ul>
   </div>
 @endif
-<p><input type="submit" value="Удалить фото" href="blog/delPicture/{{  $more->id  }}"></p>
+<p><a href="/blog/delPicture/{{  $more->id  }}"><input type="submit" value="Удалить фото"></a></p>
 <form enctype="multipart/form-data" action="" method="post">
 {{ csrf_field() }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>

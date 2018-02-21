@@ -7,6 +7,7 @@ use App\Models\BlogModel;
 use App\Models\CommentModel;
 use App\Http\Requests\StoreBlogPost;
 use App\Http\Requests\StoreBlogComment;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -32,8 +33,7 @@ class BlogController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $request->picture->storeAs('public/blog', $request->picture->getClientOriginalName());
-            $picture = asset('storage/blog/' . $request->picture->getClientOriginalName());
+            $picture = Storage::url($request->picture->store('public/blog'));
         }
         BlogModel::addingPost($picture, $request->topic, $request->tell);
         return redirect('blog');
@@ -51,8 +51,7 @@ class BlogController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $request->picture->storeAs('public/blog', $request->picture->getClientOriginalName());
-            $picture = asset('storage/blog/' . $request->picture->getClientOriginalName());
+            $picture = Storage::url($request->picture->store('public/blog'));
         }
         BlogModel::editPost($id, $picture, $request->topic, $request->tell);
         return redirect('blog');
