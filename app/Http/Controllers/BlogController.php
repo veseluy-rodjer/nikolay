@@ -3,21 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\BlogModel;
-
 use App\Models\CommentModel;
-
 use App\Http\Requests\StoreBlogPost;
-
 use App\Http\Requests\StoreBlogComment;
 
 class BlogController extends Controller
 {
-    
     public function __construct()
     {
-        $this->middleware('checkBlog')->only('del');
+        $this->middleware('checkBlog')->only('editGet', 'del', 'delPicture', 'more', 'addCommentGet', 'delComment');
     }
 
     public function index()
@@ -26,7 +21,7 @@ class BlogController extends Controller
         $date = ['title' => 'Сайты-визитки. Блог', 'listing' => $listing];
         return view('blog', $date);
     }
-    
+
     public function addingGet()
     {
         $date = ['title' => 'Сайты-визитки. Блог'];
@@ -50,7 +45,6 @@ class BlogController extends Controller
         $comments = CommentModel::listComments($id);
         $date = ['title' => 'Сайты-визитки. Блог', 'more' => $more, 'comments' => $comments];
         return view('blog/edit', $date);
-
     }
 
     public function editPost(StoreBlogPost $request, $id)
@@ -63,7 +57,7 @@ class BlogController extends Controller
         BlogModel::editPost($id, $picture, $request->topic, $request->tell);
         return redirect('blog');
     }
-    
+
     public function del($id)
     {
         BlogModel::del($id);
@@ -72,10 +66,9 @@ class BlogController extends Controller
 
     public function delPicture($id)
     {
-        BlogModel::del($id);
-        return redirect('blog');
+        BlogModel::delPicture($id);
+        return back();
     }
-
 
     public function more($id)
     {
@@ -85,7 +78,7 @@ class BlogController extends Controller
         return view('blog/more', $date);
     }
 
-    public function addCommentGet()
+    public function addCommentGet($id)
     {
         $date = ['title' => 'Сайты-визитки. Блог'];
         return view('blog/addComment', $date);
@@ -102,5 +95,4 @@ class BlogController extends Controller
         CommentModel::delComment($id);
         return back();
     }
-
 }

@@ -28,6 +28,7 @@ class StoreBlogComment extends FormRequest
             'comment' => 'required',                    
         ];
     }
+
     public function messages()
     {
         return [
@@ -35,6 +36,5 @@ class StoreBlogComment extends FormRequest
             'comment.required'  => 'Поле нужно заполнить',
         ];
     }
-
 
 }

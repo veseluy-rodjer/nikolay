@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
 use App\Models\BlogModel;
+use App\Models\CommentModel;
 
 class CheckBlog
 {
@@ -17,9 +17,16 @@ class CheckBlog
      */
     public function handle($request, Closure $next)
     {
-        if (!BlogModel::find($request->id)) {
-            return response('Такой записи не существует');
-        }        
+        if ($request->is('blog/delComment/*')) {
+            if (!CommentModel::find($request->id)) {
+                return response('Такой записи не существует');
+            }
+        }
+        else {
+            if (!BlogModel::find($request->id)) {
+                return response('Такой записи не существует');
+            }
+        }
         return $next($request);
     }
 }
