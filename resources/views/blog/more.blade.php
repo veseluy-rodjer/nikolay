@@ -23,7 +23,7 @@
                   <span><i class="fa fa-user"></i> <a href="/blog/edit/{{ $more->id }}">Изменить</a></span>
                   <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $more->id }}">Удалить</a></span>
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
-                  <span><i class="fa fa-comment"></i> <a href="#">2 Комментарии</a></span>
+                  <span><i class="fa fa-comment"></i> <a href="#">{{ $more->comments()->count() }} Комментарии</a></span>
                   <span><i class="fa fa-heart"></i><a href="#">56 Понравилось</a></span>
                 </div>
               </div>

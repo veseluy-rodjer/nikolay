@@ -79,7 +79,9 @@ class BlogController extends Controller
 
     public function addCommentGet($id)
     {
-        $date = ['title' => 'Сайты-визитки. Блог'];
+        $more = BlogModel::editGet($id);
+        $comments = CommentModel::listComments($id);
+        $date = ['title' => 'Сайты-визитки. Блог', 'more' => $more, 'comments' => $comments];
         return view('blog/addComment', $date);
     }
 
