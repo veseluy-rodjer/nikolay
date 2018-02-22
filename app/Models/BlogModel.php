@@ -67,8 +67,13 @@ class BlogModel extends Model
      public function scopeLike($quest, $id, $ip)
     {
         $like = BlogModel::find($id);
-        
-    
+        if ($like->ips()->where('ip', $ip)->count() == 0) {
+            $ips = new IpModel;
+            $ips->ip = $ip;
+            $like->ips()->save($ips);
+            $like->like += 1;
+            $like->save();
+        }    
     }        
     
 
