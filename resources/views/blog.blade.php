@@ -26,7 +26,7 @@
                   <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $i->id }}">Удалить</a></span>
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
                   <span><i class="fa fa-comment"></i> <a href="#">{{ $i->comments()->count() }} Комментарии</a></span>
-                  <span><i class="fa fa-heart"></i><a href="#">56 Понравилось</a></span>
+                  <span><i class="fa fa-heart"></i><a href="/blog/like/{{ $i->id }}">{{ $i->like }} Понравилось</a></span>
                 </div>
               </div>
 

@@ -19,9 +19,7 @@ class CreateBlogsTable extends Migration
             $table->char('picture', 255)->nullable();
             $table->char('topic', 255);
             $table->text('tell');
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('like');
+            $table->integer('like')->nullable();
         });
     }
 

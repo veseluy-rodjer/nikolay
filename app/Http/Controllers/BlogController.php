@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkBlog')->only('editGet', 'del', 'delPicture', 'more', 'addCommentGet', 'delComment');
+        $this->middleware('checkBlog')->only('editGet', 'del', 'delPicture', 'more', 'addCommentGet', 'delComment', 'like');
     }
 
     public function index()
@@ -94,6 +94,13 @@ class BlogController extends Controller
     public function delComment($id)
     {
         CommentModel::delComment($id);
+        return back();
+    }
+
+    public function like($id)
+    {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        BlogModel::like($id, $ip);
         return back();
     }
 }

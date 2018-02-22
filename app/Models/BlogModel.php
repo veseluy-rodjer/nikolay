@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CommentModel;
+use App\Models\IpModel;
 use Illuminate\Support\Facades\Storage;
 
 class BlogModel extends Model
@@ -62,9 +63,22 @@ class BlogModel extends Model
         $delPicture->save();
         }
     }
+    
+     public function scopeLike($quest, $id, $ip)
+    {
+        $like = BlogModel::find($id);
+        
+    
+    }        
+    
 
     public function comments()
     {
         return $this->hasMany('App\Models\CommentModel');
+    }
+    
+    public function ips()
+    {
+        return $this->hasMany('App\Models\IpModel');
     }
 }

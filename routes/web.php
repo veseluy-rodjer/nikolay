@@ -42,3 +42,6 @@ Route::post('/blog/addComment/{id}', 'BlogController@addCommentPost');
 Route::get('/blog/delComment/{id}', 'BlogController@delComment');
 
 Route::get('/blog/delPicture/{id}', 'BlogController@delPicture');
+
+Route::get('/blog/like/{id}', 'BlogController@like');
+
