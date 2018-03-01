@@ -43,13 +43,7 @@
 @endforeach
 
           <ul class="pagination pagination-lg">
-            <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li>
+            {{ $listing->links() }}
           </ul>
           <!--/.pagination-->
         </div>

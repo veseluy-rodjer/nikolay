@@ -13,7 +13,7 @@ class BlogModel extends Model
 
     public function scopeListing()
     {
-        return BlogModel::orderBy('id', 'desc')->get();
+        return BlogModel::orderBy('id', 'desc')->paginate(10);
     }
 
      public function scopeAddingPost($quest, $picture, $topic, $tell)
@@ -73,7 +73,12 @@ class BlogModel extends Model
             $like->ips()->save($ips);
             $like->like += 1;
             $like->save();
-        }    
+        }
+        else {
+            $like->ips()->where('ip', $ip)->delete();
+            $like->like -= 1;
+            $like->save();
+        }
     }        
     
 
