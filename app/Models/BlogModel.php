@@ -16,7 +16,7 @@ class BlogModel extends Model
         return BlogModel::orderBy('id', 'desc')->paginate(10);
     }
 
-     public function scopeAddingPost($quest, $picture, $topic, $tell)
+    public function scopeAddingPost($quest, $picture, $topic, $tell)
     {
         $add = new BlogModel;
         $add->picture = $picture;
@@ -25,12 +25,12 @@ class BlogModel extends Model
         $add->save();
     }
 
-     public function scopeEditGet($quest, $id)
+    public function scopeEditGet($quest, $id)
     {
         return BlogModel::find($id);
     }        
 
-     public function scopeEditPost($quest, $id, $picture, $topic, $tell)
+    public function scopeEditPost($quest, $id, $picture, $topic, $tell)
     {
         $edit = BlogModel::find($id);
         if (!empty($picture)) {
@@ -64,7 +64,7 @@ class BlogModel extends Model
         }
     }
     
-     public function scopeLike($quest, $id, $ip)
+    public function scopeLike($quest, $id, $ip)
     {
         $like = BlogModel::find($id);
         if ($like->ips()->where('ip', $ip)->count() == 0) {
