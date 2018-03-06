@@ -13,7 +13,7 @@
 
 Route::get('/', 'MainController@index');
 
-Route::get('/about', 'AboutController@index');
+Route::resource('/about', 'AboutController');
 
 Route::get('/blog', 'BlogController@index');
 

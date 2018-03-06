@@ -49,6 +49,8 @@ class BlogModel extends Model
             $path[1] = 'public';
             Storage::delete(implode('/', $path));
          }
+         $del->comments()->delete();
+         $del->ips()->delete();
          $del->delete();         
     }
 

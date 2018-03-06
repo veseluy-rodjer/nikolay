@@ -24,7 +24,8 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        $date = ['title' => 'Сайты-визитки. Обо мне'];
+        return view('about/create', $date);
     }
 
     /**

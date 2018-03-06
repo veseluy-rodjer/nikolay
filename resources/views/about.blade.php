@@ -25,7 +25,7 @@
 
   <div class="our-team">
     <div class="container">
-      <h3>Наша команда))</h3>
+      <h3>Наша команда))<a href="/about/create">&#160;Добавить</a></h3>
       <div class="text-center">
         <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
           <img src="{{ asset('images/services/1.jpg') }}" alt="">
