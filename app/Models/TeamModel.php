@@ -7,30 +7,36 @@ use Illuminate\Database\Eloquent\Model;
 class TeamModel extends Model
 {
     protected $table = 'teams';
+
+    public function scopeListing($quest)
+    {
+        return TeamModel::all();
+    }
+
     
-    public function scopeAddingTeam($quest, $picture, $name, $profession)
+    public function scopeStore($quest, $picture, $name, $profession)
     {
         $add = new TeamModel;
         $add->picture = $picture;
-        $add->topic = $topic;
-        $add->tell = $tell;
+        $add->name = $name;
+        $add->profession = $profession;
         $add->save();
     }
     
-    public function scopeEditGet($quest, $id)
+    public function scopeEdit($quest, $id)
     {
         return TeamModel::find($id);
     }        
 
-    public function scopeEditPost($quest, $id, $picture, $name, $profession)
+    public function scopeUp($quest, $id, $picture, $name, $profession)
     {
-        $edit = TeamModel::find($id);
+        $up = TeamModel::find($id);
         if (!empty($picture)) {
-            $edit->picture = $picture;
+            $up->picture = $picture;
         }
-        $edit->name = $name;
-        $edit->profession = $profession;
-        $edit->save();        
+        $up->name = $name;
+        $up->profession = $profession;
+        $up->save();        
     }    
 
     public function scopeDel($quest, $id)

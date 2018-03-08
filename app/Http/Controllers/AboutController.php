@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\TeamModel;
 
 class AboutController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkTeam')->only('show', 'edit', 'destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $date = ['title' => 'Сайты-визитки. Обо мне'];
+        $listing = TeamModel::listing();        
+        $date = ['title' => 'Сайты-визитки. Обо мне', 'listing' => $listing];
         return view('about', $date);
     }
 
@@ -36,7 +44,12 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $picture = null;
+        if (!empty($request->picture)) {
+            $picture = Storage::url($request->picture->store('public/about'));
+        }
+        TeamModel::store($picture, $request->name, $request->profession);
+        return redirect('about');
     }
 
     /**
@@ -58,7 +71,10 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = TeamModel::edit($id);
+        $date = ['title' => 'Сайты-визитки. Блог', 'edit' => $edit];
+        return view('about/edit', $date);
+
     }
 
     /**
@@ -70,7 +86,13 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $picture = null;
+        if (!empty($request->picture)) {
+            $picture = Storage::url($request->picture->store('public/about'));
+        }
+        TeamModel::up($id, $picture, $request->name, $request->profession);
+        return redirect('about');
+        
     }
 
     /**

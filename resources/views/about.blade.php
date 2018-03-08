@@ -27,21 +27,16 @@
     <div class="container">
       <h3>Наша команда))<a href="/about/create">&#160;Добавить</a></h3>
       <div class="text-center">
+      
+@foreach ($listing as $i)
         <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-          <img src="{{ asset('images/services/1.jpg') }}" alt="">
-          <h4>John Doe</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+          <img src={{ $i->picture }} width="100%" alt="">
+          <h4>{{ $i->name }}</h4>
+          <p>{{ $i->profession }}</p>
+          <a href="/about/{{ $i->id }}/edit">Редактировать</a>
         </div>
-        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-          <img src="{{ asset('images/services/2.jpg') }}" alt="">
-          <h4>John Doe</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
-        </div>
-        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-          <img src="{{ asset('images/services/3.jpg') }}" alt="">
-          <h4>John Doe</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
-        </div>
+@endforeach        
+
       </div>
     </div>
   </div>
