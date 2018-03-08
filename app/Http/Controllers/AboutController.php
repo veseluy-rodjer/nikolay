@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\TeamModel;
+use App\Http\Requests\StoreTeam;
 
 class AboutController extends Controller
 {
@@ -42,7 +43,7 @@ class AboutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTeam $request)
     {
         $picture = null;
         if (!empty($request->picture)) {
@@ -84,7 +85,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreTeam $request, $id)
     {
         $picture = null;
         if (!empty($request->picture)) {
