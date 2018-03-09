@@ -20,7 +20,7 @@
 {{ csrf_field() }}
 {{ method_field('PATCH') }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
-<p>Загрузить фото: <input name="picture" type="file"></p>
+<p>Загрузить фото: <input name="picture" type="file" accept="image/*"></p>
 
 <p>ФИО: <textarea rows="3" cols="45" wrap="soft" name="name" required>{{ $edit->name }}</textarea></p>
 <p>Должность: <textarea rows="10" cols="45" wrap="soft" name="profession" required>{{ $edit->profession }}</textarea></p>

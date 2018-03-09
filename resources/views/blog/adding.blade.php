@@ -17,7 +17,7 @@
 <form enctype="multipart/form-data" action="" method="post">
 {{ csrf_field() }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
-<p>Загрузить фото: <input name="picture" type="file"></p>
+<p>Загрузить фото: <input name="picture" type="file" accept="image/*"></p>
 
 <p>Тема: <textarea rows="3" cols="45" wrap="soft" name="topic" required></textarea></p>
 <p>Текст: <textarea rows="10" cols="45" wrap="soft" name="tell" required></textarea></p>

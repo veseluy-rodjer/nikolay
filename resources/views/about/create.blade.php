@@ -17,7 +17,7 @@
 <form enctype="multipart/form-data" action="/about" method="post">
 {{ csrf_field() }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
-<p>Загрузить фото: <input name="picture" type="file"></p>
+<p>Загрузить фото: <input name="picture" type="file" accept="image/*"></p>
 
 <p>ФИО: <textarea rows="3" cols="45" wrap="soft" name="name" required></textarea></p>
 <p>Должность: <textarea rows="10" cols="45" wrap="soft" name="profession" required></textarea></p>
