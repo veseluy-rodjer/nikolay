@@ -33,7 +33,12 @@
           <img src={{ $i->picture }} width="100%" alt="">
           <h4>{{ $i->name }}</h4>
           <p>{{ $i->profession }}</p>
-          <a href="/about/{{ $i->id }}/edit">Редактировать</a>
+          <a href="/about/{{ $i->id }}/edit"><input type="submit" value="Редактировать"></a>
+<form action="/about/{{ $i->id }}" method="post">
+{{ csrf_field() }}
+{{ method_field('DELETE') }}
+<p><input type="submit" value="Удалить"></p>
+</form>
         </div>
 @endforeach        
 

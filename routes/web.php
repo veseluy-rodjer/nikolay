@@ -13,13 +13,11 @@
 
 Route::get('/', 'MainController@index');
 
-Route::get('/about/delPicture/{id}', 'AboutController@delPicture');
+Route::delete('/about/delPicture/{id}', 'AboutController@delPicture');
 
 Route::resource('/about', 'AboutController');
 
-Route::get('/blog', 'BlogController@index');
-
-Route::match(['get', 'post'], '/contact', 'ContactController@index');
+Route::resource('/contact', 'ContactController');
 
 Route::get('/portfolio', 'PortfolioController@index');
 
@@ -47,3 +45,4 @@ Route::get('/blog/delPicture/{id}', 'BlogController@delPicture');
 
 Route::get('/blog/like/{id}', 'BlogController@like');
 
+Route::get('/blog', 'BlogController@index');

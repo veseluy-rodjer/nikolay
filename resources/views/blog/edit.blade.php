@@ -19,7 +19,6 @@
 {{ csrf_field() }}
 <p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
 <p>Загрузить фото: <input name="picture" type="file" accept="image/*"></p>
-
 <p>Тема: <textarea rows="3" cols="45" wrap="soft" name="topic" required>{{ $more->topic }}</textarea></p>
 <p>Текст: <textarea rows="10" cols="45" wrap="soft" name="tell" required>{{ $more->tell }}</textarea></p>
 <p><input type="submit"></p>

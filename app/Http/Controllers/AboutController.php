@@ -11,7 +11,7 @@ class AboutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkTeam')->only('show', 'edit', 'destroy');
+        $this->middleware('checkTeam')->only('show', 'edit');
     }
 
     /**
@@ -104,6 +104,13 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TeamModel::destroy($id);
+        return redirect('about');
+    }
+    
+    public function delPicture($id)
+    {
+        TeamModel::delPicture($id);
+        return back();
     }
 }

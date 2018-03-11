@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class TeamModel extends Model
 {
@@ -32,6 +33,11 @@ class TeamModel extends Model
     {
         $up = TeamModel::find($id);
         if (!empty($picture)) {
+            if ($up->picture != null) {
+                $path = explode('/', $up->picture);
+                $path[1] = 'public';
+                Storage::delete(implode('/', $path));
+            }
             $up->picture = $picture;
         }
         $up->name = $name;
@@ -39,15 +45,15 @@ class TeamModel extends Model
         $up->save();        
     }    
 
-    public function scopeDel($quest, $id)
+    public function scopeDestroy($quest, $id)
     {
-        $del = TeamModel::find($id);
-        if (!empty($del->picture)) {
-            $path = explode('/', $del->picture);
+        $destroy = TeamModel::find($id);
+        if (!empty($destroy->picture)) {
+            $path = explode('/', $destroy->picture);
             $path[1] = 'public';
             Storage::delete(implode('/', $path));
          }
-         $del->delete();         
+         $destroy->delete();         
     }
 
     public function scopeDelPicture($quest, $id)
@@ -61,6 +67,4 @@ class TeamModel extends Model
         $delPicture->save();
         }
     }
-    
-    
 }

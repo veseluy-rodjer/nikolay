@@ -34,9 +34,11 @@ class BlogModel extends Model
     {
         $edit = BlogModel::find($id);
         if (!empty($picture)) {
-            $path = explode('/', $edit->picture);
-            $path[1] = 'public';
-            Storage::delete(implode('/', $path));
+            if ($edit->picture != null) {
+                $path = explode('/', $edit->picture);
+                $path[1] = 'public';
+                Storage::delete(implode('/', $path));
+            }
             $edit->picture = $picture;
         }
         $edit->topic = $topic;
