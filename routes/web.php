@@ -19,7 +19,7 @@ Route::resource('/about', 'AboutController');
 
 Route::resource('/contact', 'ContactController');
 
-Route::get('/portfolio', 'PortfolioController@index');
+Route::resource('/portfol', 'PortfolioController');
 
 Route::get('/services', 'ServicesController@index');
 

@@ -35,7 +35,7 @@ class StoreContact extends FormRequest
     {
         return [
             'name.required' => 'Поле нужно заполнить',
-            'email.required'  => 'Введите корректный эл. адрес',
+            'email.email'  => 'Введите корректный эл. адрес',
             'subject.required'  => 'Поле нужно заполнить',
             'message.required'  => 'Поле нужно заполнить',
         ];

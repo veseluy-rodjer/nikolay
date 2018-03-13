@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $date = ['title' => 'Сайты-визитки. Контакты'];
+        $date = ['title' => 'Сайты-визитки. Контакты', 'm' => 'mail'];
         return view('contact', $date);
     }
 
@@ -31,7 +31,14 @@ class ContactController extends Controller
         $subject = $request->subject;
         $message = $request->message;
         $message = wordwrap($message, 70, "\r\n");
-        mail('mukataev@gmail.com', $subject, $message, $email);
-        return back();
+        $headers = 'From: nikolay@nikolay.kl.com.ua' . "\r\n";
+        if (mail('mukataev@gmail.com', $subject, $message, $headers, $email)) {
+            $mail = 'Ваше письмо успешно отправлено';
+        }
+        else {
+            $mail = 'Неудалось отправить письмо, что-то не так...';
+        }        
+        $date = ['title' => 'Сайты-визитки. Контакты', 'm' => $mail];
+        return view('contact', $date);
     }
 }

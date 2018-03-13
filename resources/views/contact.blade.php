@@ -1,6 +1,19 @@
 @extends('layouts/template')
 @section('content')
 
+<br>
+<br>
+<br>
+<br>
+@if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
   <div id="breadcrumb">
     <div class="container">
       <div class="breadcrumb">
@@ -17,8 +30,8 @@
   <section id="contact-page">
     <div class="container">
       <div class="center">
-        <h2>Drop Your Message</h2>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2>Заполните форму ниже для отправки мне письма</h2>
+        <p>{{ $m }}</p>
       </div>
       <div class="row contact-wrap">
         <div class="status alert alert-success" style="display: none"></div>

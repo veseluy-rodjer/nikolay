@@ -44,7 +44,7 @@
                 <li role="presentation"><a href="/" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == '') echo 'class="active"'; @endphp>Главная</a></li>
                 <li role="presentation"><a href="/about" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'about') echo 'class="active"'; @endphp>Обо мне</a></li>
                 <li role="presentation"><a href="/services" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'services') echo 'class="active"'; @endphp>Сервис</a></li>
-                <li role="presentation"><a href="/portfolio" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'portfolio') echo 'class="active"'; @endphp>Портфолио</a></li>
+                <li role="presentation"><a href="/portfol" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'portfol') echo 'class="active"'; @endphp>Портфолио</a></li>
                 <li role="presentation"><a href="/blog" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'blog') echo 'class="active"'; @endphp>Блог</a></li>
                 <li role="presentation"><a href="/contact" @php if (isset(explode('/', $_SERVER['REQUEST_URI'])[1]) && explode('/', $_SERVER['REQUEST_URI'])[1] == 'contact') echo 'class="active"'; @endphp>Контакты</a></li>
               </ul>
