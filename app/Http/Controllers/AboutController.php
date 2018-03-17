@@ -47,7 +47,7 @@ class AboutController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $picture = Storage::url($request->picture->store('public/about'));
+            $picture = Storage::disk('public')->url($request->picture->store('about', 'public'));
         }
         TeamModel::store($picture, $request->name, $request->profession);
         return redirect('about');
@@ -89,7 +89,7 @@ class AboutController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $picture = Storage::url($request->picture->store('public/about'));
+            $picture = Storage::disk('public')->url($request->picture->store('about', 'public'));
         }
         TeamModel::up($id, $picture, $request->name, $request->profession);
         return redirect('about');

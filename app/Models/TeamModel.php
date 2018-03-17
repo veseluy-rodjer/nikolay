@@ -34,9 +34,9 @@ class TeamModel extends Model
         $up = TeamModel::find($id);
         if (!empty($picture)) {
             if ($up->picture != null) {
-                $path = explode('/', $up->picture);
-                $path[1] = 'public';
-                Storage::delete(implode('/', $path));
+                $path = array_slice(explode('/', $up->picture), 4);
+                $path = implode('/', $path);
+                Storage::disk('public')->delete($path);
             }
             $up->picture = $picture;
         }
@@ -49,9 +49,9 @@ class TeamModel extends Model
     {
         $destroy = TeamModel::find($id);
         if (!empty($destroy->picture)) {
-            $path = explode('/', $destroy->picture);
-            $path[1] = 'public';
-            Storage::delete(implode('/', $path));
+            $path = array_slice(explode('/', $destroy->picture), 4);
+            $path = implode('/', $path);
+            Storage::disk('public')->delete($path);
          }
          $destroy->delete();         
     }
@@ -60,9 +60,9 @@ class TeamModel extends Model
     {
         $delPicture = TeamModel::find($id);
         if (!empty($delPicture->picture)) {
-            $path = explode('/', $delPicture->picture);
-            $path[1] = 'public';
-            Storage::delete(implode('/', $path));
+            $path = array_slice(explode('/', $delPicture->picture), 4);
+            $path = implode('/', $path);
+            Storage::disk('public')->delete($path);
         $delPicture->picture = null;
         $delPicture->save();
         }

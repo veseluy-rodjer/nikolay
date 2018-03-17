@@ -35,9 +35,9 @@ class BlogModel extends Model
         $edit = BlogModel::find($id);
         if (!empty($picture)) {
             if ($edit->picture != null) {
-                $path = explode('/', $edit->picture);
-                $path[1] = 'public';
-                Storage::delete(implode('/', $path));
+                $path = array_slice(explode('/', $edit->picture), 4);
+                $path = implode('/', $path);
+                Storage::disk('public')->delete($path);
             }
             $edit->picture = $picture;
         }
@@ -50,9 +50,9 @@ class BlogModel extends Model
     {
         $del = BlogModel::find($id);
         if (!empty($del->picture)) {
-            $path = explode('/', $del->picture);
-            $path[1] = 'public';
-            Storage::delete(implode('/', $path));
+            $path = array_slice(explode('/', $del->picture), 4);
+            $path = implode('/', $path);
+            Storage::disk('public')->delete($path);
          }
          $del->comments()->delete();
          $del->ips()->delete();
@@ -63,9 +63,9 @@ class BlogModel extends Model
     {
         $delPicture = BlogModel::find($id);
         if (!empty($delPicture->picture)) {
-            $path = explode('/', $delPicture->picture);
-            $path[1] = 'public';
-            Storage::delete(implode('/', $path));
+            $path = array_slice(explode('/', $delPicture->picture), 4);
+            $path = implode('/', $path);
+            Storage::disk('public')->delete($path);
         $delPicture->picture = null;
         $delPicture->save();
         }

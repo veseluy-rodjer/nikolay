@@ -33,7 +33,7 @@ class BlogController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $picture = Storage::url($request->picture->store('public/blog'));
+            $picture = Storage::disk('public')->url($request->picture->store('blog', 'public'));
         }
         BlogModel::addingPost($picture, $request->topic, $request->tell);
         return redirect('blog');
@@ -51,7 +51,7 @@ class BlogController extends Controller
     {
         $picture = null;
         if (!empty($request->picture)) {
-            $picture = Storage::url($request->picture->store('public/blog'));
+            $picture = Storage::disk('public')->url($request->picture->store('blog', 'public'));
         }
         BlogModel::editPost($id, $picture, $request->topic, $request->tell);
         return redirect('blog');

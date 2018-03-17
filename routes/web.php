@@ -46,3 +46,7 @@ Route::get('/blog/delPicture/{id}', 'BlogController@delPicture');
 Route::get('/blog/like/{id}', 'BlogController@like');
 
 Route::get('/blog', 'BlogController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
