@@ -33,6 +33,7 @@ class AboutController extends Controller
      */
     public function create()
     {
+        $this->authorize('before', TeamModel::class);
         $date = ['title' => 'Сайты-визитки. Обо мне'];
         return view('about/create', $date);
     }
@@ -45,6 +46,7 @@ class AboutController extends Controller
      */
     public function store(StoreTeam $request)
     {
+        $this->authorize('before', TeamModel::class);
         $picture = null;
         if (!empty($request->picture)) {
             $picture = Storage::disk('public')->url($request->picture->store('about', 'public'));
@@ -72,10 +74,10 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('before', TeamModel::class);
         $edit = TeamModel::edit($id);
         $date = ['title' => 'Сайты-визитки. Блог', 'edit' => $edit];
         return view('about/edit', $date);
-
     }
 
     /**
@@ -87,13 +89,13 @@ class AboutController extends Controller
      */
     public function update(StoreTeam $request, $id)
     {
+        $this->authorize('before', TeamModel::class);
         $picture = null;
         if (!empty($request->picture)) {
             $picture = Storage::disk('public')->url($request->picture->store('about', 'public'));
         }
         TeamModel::up($id, $picture, $request->name, $request->profession);
         return redirect('about');
-        
     }
 
     /**
@@ -104,12 +106,14 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('before', TeamModel::class);
         TeamModel::destroy($id);
         return redirect('about');
     }
     
     public function delPicture($id)
     {
+        $this->authorize('before', TeamModel::class);
         TeamModel::delPicture($id);
         return back();
     }

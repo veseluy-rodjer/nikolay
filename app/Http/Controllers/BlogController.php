@@ -25,12 +25,14 @@ class BlogController extends Controller
 
     public function addingGet()
     {
+        $this->authorize('before', BlogModel::class);
         $date = ['title' => 'Сайты-визитки. Блог'];
         return view('blog/adding', $date);
     }
 
     public function addingPost(StoreBlogPost $request)
     {
+        $this->authorize('before', BlogModel::class);
         $picture = null;
         if (!empty($request->picture)) {
             $picture = Storage::disk('public')->url($request->picture->store('blog', 'public'));
@@ -41,6 +43,7 @@ class BlogController extends Controller
 
     public function editGet($id)
     {
+        $this->authorize('before', BlogModel::class);
         $more = BlogModel::editGet($id);
         $comments = CommentModel::listComments($id);
         $date = ['title' => 'Сайты-визитки. Блог', 'more' => $more, 'comments' => $comments];
@@ -49,6 +52,7 @@ class BlogController extends Controller
 
     public function editPost(StoreBlogPost $request, $id)
     {
+        $this->authorize('before', BlogModel::class);
         $picture = null;
         if (!empty($request->picture)) {
             $picture = Storage::disk('public')->url($request->picture->store('blog', 'public'));
@@ -59,12 +63,14 @@ class BlogController extends Controller
 
     public function del($id)
     {
+        $this->authorize('before', BlogModel::class);
         BlogModel::del($id);
         return redirect('blog');
     }
 
     public function delPicture($id)
     {
+        $this->authorize('before', BlogModel::class);
         BlogModel::delPicture($id);
         return back();
     }
@@ -93,6 +99,7 @@ class BlogController extends Controller
 
     public function delComment($id)
     {
+        $this->authorize('before', CommentModel::class);
         CommentModel::delComment($id);
         return back();
     }
