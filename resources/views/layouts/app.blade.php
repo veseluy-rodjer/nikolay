@@ -47,6 +47,10 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="Exit">
+                                </form>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
