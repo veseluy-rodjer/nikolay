@@ -10,10 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'MainController@index');
-
-Route::delete('/about/delPicture/{id}', 'AboutController@delPicture');
+Route::delete('/about/delPicture/{id}', 'AboutController@delPicture')->name('aboutDelPicture');
 
 Route::resource('/about', 'AboutController');
 
@@ -50,3 +47,7 @@ Route::get('/blog', 'BlogController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::delete('/delPicture/{id}', 'MainController@delPicture')->name('mainDelPicture');
+
+Route::resource('/', 'MainController', ['parameters' => ['' => 'main']]);

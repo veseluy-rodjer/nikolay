@@ -5,33 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class TeamModel extends Model
+class MainModel extends Model
 {
-    protected $table = 'teams';
+    protected $table = 'mains';
 
     public function scopeListing($quest)
     {
-        return TeamModel::all();
+        return MainModel::orderBy('id', 'desc')->get();
     }
 
-    
-    public function scopeStore($quest, $picture, $name, $profession)
+    public function scopeStore($quest, $picture, $title, $news)
     {
-        $add = new TeamModel;
+        $add = new MainModel;
         $add->picture = $picture;
-        $add->name = $name;
-        $add->profession = $profession;
+        $add->title = $title;
+        $add->news = $news;
         $add->save();
     }
     
     public function scopeEdit($quest, $id)
     {
-        return TeamModel::find($id);
+        return MainModel::find($id);
     }        
 
-    public function scopeUp($quest, $id, $picture, $name, $profession)
+    public function scopeUp($quest, $id, $picture, $title, $news)
     {
-        $up = TeamModel::find($id);
+        $up = MainModel::find($id);
         if (!empty($picture)) {
             if ($up->picture != null) {
                 $path = array_slice(explode('/', $up->picture), 4);
@@ -40,14 +39,14 @@ class TeamModel extends Model
             }
             $up->picture = $picture;
         }
-        $up->name = $name;
-        $up->profession = $profession;
+        $up->title = $title;
+        $up->news = $news;
         $up->save();        
     }    
 
     public function scopeDestr($quest, $id)
     {
-        $destroy = TeamModel::find($id);
+        $destroy = MainModel::find($id);
         if (!empty($destroy->picture)) {
             $path = array_slice(explode('/', $destroy->picture), 4);
             $path = implode('/', $path);
@@ -58,7 +57,7 @@ class TeamModel extends Model
 
     public function scopeDelPicture($quest, $id)
     {
-        $delPicture = TeamModel::find($id);
+        $delPicture = MainModel::find($id);
         if (!empty($delPicture->picture)) {
             $path = array_slice(explode('/', $delPicture->picture), 4);
             $path = implode('/', $path);

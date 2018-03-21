@@ -30,7 +30,7 @@
       
 @foreach ($listing as $i)
         <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-          <img src={{ $i->picture }} width="100%" alt="">
+          <img src="{{ $i->picture }}" width="100%" alt="">
           <h4>{{ $i->name }}</h4>
           <p>{{ $i->profession }}</p>
           <a href="/about/{{ $i->id }}/edit"><input type="submit" value="Редактировать"></a>

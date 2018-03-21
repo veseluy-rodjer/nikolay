@@ -53,25 +53,23 @@
   <div class="lates">
     <div class="container">
       <div class="text-center">
-        <h2>Важные мировые новости</h2>
+        <h2>Важные мировые новости<a href="{{  route('create')  }}">&#160;Добавить</a></h2>
       </div>
+      
+@foreach ($listing as $i)      
       <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <img src="{{ asset('images/golf.jpg') }}" class="img-responsive" />
-        <h3>Если ваши новости интересней, размещайте их на своем сайте-визитке!</h3>
-        <p>Здесь вы можете размещать новости вашей компании </p>
+        <img src="{{ $i->picture }}" class="img-responsive" />
+        <h3>{{ $i->title }}</h3>
+        <p>{{ $i->news }} </p>
+        <a href="{{ route('edit', [$i->id]) }}"><input type="submit" value="Редактировать"></a>
+<form action="{{ route('destroy', [$i->id]) }}" method="post">
+{{ csrf_field() }}
+{{ method_field('DELETE') }}
+<p><input type="submit" value="Удалить"></p>
+</form>        
       </div>
+@endforeach
 
-      <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-        <img src="{{ asset('images/moscow.jpg') }}" class="img-responsive" />
-        <h3>Если ваши новости интересней, размещайте их на своем сайте-визитке!</h3>
-        <p>Здесь вы можете размещать новости вашей компании </p>
-      </div>
-
-      <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-        <img src="{{ asset('images/leon.jpg') }}" class="img-responsive" />
-        <h3>Если ваши новости интересней, размещайте их на своем сайте-визитке!</h3>
-        <p>Здесь вы можете размещать новости вашей компании </p>
-      </div>
     </div>
   </div>
 

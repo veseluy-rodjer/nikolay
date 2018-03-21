@@ -107,7 +107,7 @@ class AboutController extends Controller
     public function destroy($id)
     {
         $this->authorize('before', TeamModel::class);
-        TeamModel::destroy($id);
+        TeamModel::destr($id);
         return redirect('about');
     }
     
