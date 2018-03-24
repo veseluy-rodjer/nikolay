@@ -9,6 +9,11 @@ use App\Http\Requests\StoreMain;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkId')->only('show', 'edit', 'destroy', 'delPicture');
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -5,7 +5,11 @@
     <div class="container">
       <div class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li>Blog <a href="/blog/adding">&#160;Добавить запись</a></li>
+        <li>Blog
+@can('before', App\Models\BlogModel::class)        
+        <a href="/blog/adding">&#160;Добавить запись</a>
+@endcan        
+        </li>
       </div>
     </div>
   </div>
@@ -22,8 +26,10 @@
               <div class="col-xs-12 col-sm-2">
                 <div class="entry-meta">
                   <span id="publish_date">{{ $i->created_at }}</span>
+@can('before', App\Models\BlogModel::class)
                   <span><i class="fa fa-user"></i> <a href="/blog/edit/{{ $i->id }}">Изменить</a></span>
                   <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $i->id }}">Удалить</a></span>
+@endcan                  
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
                   <span><i class="fa fa-comment"></i> <a>{{ $i->comments()->count() }} Комментарии</a></span>
                   <span><i class="fa fa-heart"></i><a href="/blog/like/{{ $i->id }}">{{ $i->like }} Понравилось</a></span>
@@ -42,17 +48,21 @@
 
 @endforeach
 
+@if (Request::is('/blog/*'))
           <ul class="pagination pagination-lg">
             {{ $listing->links() }}
           </ul>
           <!--/.pagination-->
+@endif
+          
         </div>
         <!--/.col-md-8-->
 
         <aside class="col-md-4">
           <div class="widget search">
-            <form role="form">
-              <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+            <form action="{{  route('search')  }}" method="post">
+              {{ csrf_field() }}
+              <input type="text" class="form-control search_box" name="search" autocomplete="off" placeholder="Search Here">
             </form>
           </div>
           <!--/.search-->

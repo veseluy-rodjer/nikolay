@@ -25,7 +25,11 @@
 
   <div class="our-team">
     <div class="container">
-      <h3>Наша команда))<a href="/about/create">&#160;Добавить</a></h3>
+      <h3>Наша команда))
+@can('before', App\Models\TeamModel::class)      
+      <a href="/about/create">&#160;Добавить</a>
+@endcan      
+      </h3>
       <div class="text-center">
       
 @foreach ($listing as $i)
@@ -33,12 +37,14 @@
           <img src="{{ $i->picture }}" width="100%" alt="">
           <h4>{{ $i->name }}</h4>
           <p>{{ $i->profession }}</p>
+@can('before', App\Models\TeamModel::class)          
           <a href="/about/{{ $i->id }}/edit"><input type="submit" value="Редактировать"></a>
 <form action="/about/{{ $i->id }}" method="post">
 {{ csrf_field() }}
 {{ method_field('DELETE') }}
 <p><input type="submit" value="Удалить"></p>
 </form>
+@endcan
         </div>
 @endforeach        
 

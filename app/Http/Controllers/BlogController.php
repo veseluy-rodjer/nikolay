@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkBlog')->only('editGet', 'del', 'delPicture', 'more', 'addCommentGet', 'delComment', 'like');
+        $this->middleware('checkId')->only('editGet', 'del', 'delPicture', 'more', 'addCommentGet', 'delComment', 'like');
     }
 
     public function index()

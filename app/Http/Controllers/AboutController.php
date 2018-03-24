@@ -11,7 +11,7 @@ class AboutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkTeam')->only('show', 'edit');
+        $this->middleware('checkId')->only('show', 'edit');
     }
 
     /**

@@ -88,6 +88,11 @@ class BlogModel extends Model
         }
     }        
     
+    public function scopeSearch($quest, $search)
+    {
+        return BlogModel::where('topic', 'like', $search)
+        ->orWhere('tell', 'like', $search)->get();
+    }
 
     public function comments()
     {

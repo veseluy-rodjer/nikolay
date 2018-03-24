@@ -14,6 +14,8 @@ Route::delete('/about/delPicture/{id}', 'AboutController@delPicture')->name('abo
 
 Route::resource('/about', 'AboutController');
 
+Route::post('/search', 'SearchController@index')->name('search');
+
 Route::resource('/contact', 'ContactController');
 
 Route::resource('/portfol', 'PortfolioController');

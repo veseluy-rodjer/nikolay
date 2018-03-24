@@ -5,7 +5,11 @@
     <div class="container">
       <div class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li>Blog <a href="/blog/adding">&#160;Добавить запись</a></li>
+        <li>Blog
+@can('before', App\Models\BlogModel::class)
+        <a href="/blog/adding">&#160;Добавить запись</a>
+@endcan
+</li>
       </div>
     </div>
   </div>
@@ -20,8 +24,10 @@
               <div class="col-xs-12 col-sm-2">
                 <div class="entry-meta">
                   <span id="publish_date">{{ $more->created_at }}</span>
+@can('before', App\Models\BlogModel::class)                  
                   <span><i class="fa fa-user"></i> <a href="/blog/edit/{{ $more->id }}">Изменить</a></span>
                   <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $more->id }}">Удалить</a></span>
+@endcan                  
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
                   <span><i class="fa fa-comment"></i> <a>{{ $more->comments()->count() }} Комментарии</a></span>
                   <span><i class="fa fa-heart"></i><a href="/blog/like/{{ $more->id }}">{{ $more->like }} Понравилось</a></span>
@@ -34,7 +40,9 @@
 @if(Request::is('blog/more/*'))                
                 <h4>{{ $more->topic }}</h4>
                 <p>{{ $more->tell }}</p>
+@can('before', App\Models\BlogModel::class)                
                 <a class="btn btn-primary readmore" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
+@endcan                
               </div>
 @endif              
               <div class="col-xs-12 col-sm-10 blog-content">
@@ -43,7 +51,9 @@
 @foreach($comments as $comment)
                 <h4>{{ $comment->name }}</h4>
                 <p>{{ $comment->comment }}</p>
+@can('before', App\Models\BlogModel::class)                
                 <a class="btn btn-primary readmore" href="/blog/delComment/{{ $comment->id }}">Удалить комментарий <i class="fa fa-angle-right"></i></a>
+@endcan                
                 <p>___________________</p>
 @endforeach
                 

@@ -104,7 +104,7 @@
   <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
   <script src="{{ asset('js/jquery.isotope.min.js') }}"></script>
   <script src="{{ asset('js/wow.min.js') }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY">
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false">
   </script>
   <script src="{{ asset('js/functions.js') }}"></script>
 

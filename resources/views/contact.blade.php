@@ -1,10 +1,6 @@
 @extends('layouts/template')
 @section('content')
 
-<br>
-<br>
-<br>
-<br>
 @if (count($errors) > 0)
   <div class="alert alert-danger">
     <ul>
@@ -24,7 +20,7 @@
   </div>
 
   <div class="map">
-    <div id="google-map" data-latitude="46.993790" data-longitude=" 32.002686"></div>
+    <div id="google-map" data-latitude="46.996835" data-longitude="31.976097"></div>
   </div>
 
   <section id="contact-page">
