@@ -107,7 +107,7 @@ class BlogController extends Controller
     public function like($id)
     {
         $ip = $_SERVER['REMOTE_ADDR'];
-        BlogModel::like($id, $ip);
-        return back();
+        $like = BlogModel::like($id, $ip);
+        return response()->json(['like' => $like]);
     }
 }

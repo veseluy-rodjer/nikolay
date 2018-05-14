@@ -86,6 +86,7 @@ class BlogModel extends Model
             $like->like -= 1;
             $like->save();
         }
+        return $like->like;
     }        
     
     public function scopeSearch($quest, $search)

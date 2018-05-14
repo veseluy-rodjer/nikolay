@@ -32,7 +32,7 @@
 @endcan                  
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
                   <span><i class="fa fa-comment"></i> <a>{{ $i->comments()->count() }} Комментарии</a></span>
-                  <span><i class="fa fa-heart"></i><a href="/blog/like/{{ $i->id }}">{{ $i->like }} Понравилось</a></span>
+                  <span><i class="fa fa-heart"></i><a id="lalala" href="/blog/like/{{ $i->id }}">{{ $i->like }} Понравилось</a></span>
                 </div>
               </div>
 
@@ -85,5 +85,24 @@
     </div>
   </section>
   <!--/#blog-->
+
+<script>
+$(document).ready(function(){
+    $('#lalala').click(function(){
+         
+        $.ajax({
+            type: 'GET',
+            url: $('#lalala').attr('href'),
+            success: function(data){
+                $('#lalala').text(data.like + ' Понравилось');
+            },
+            error: function(){
+                alert('Sorry!');
+            }
+        });
+        return false;
+    });
+});
+</script>
 
 @endsection('content')

@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ $title }}</title>
-
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.js') }}"></script>
   <!-- Bootstrap -->
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -94,11 +96,6 @@
     </div>
   </footer>
 
-
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
-  <script src="{{ asset('js/jquery.js') }}"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
