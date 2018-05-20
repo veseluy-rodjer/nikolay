@@ -41,10 +41,32 @@
                 <h4>{{ $more->topic }}</h4>
                 <p>{{ $more->tell }}</p>
 @can('before', App\Models\BlogModel::class)                
-                <a class="btn btn-primary readmore" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary readmore" id="edit" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
 @endcan                
               </div>
-@endif              
+@endif
+
+<div class="edit">
+@if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+<p><a href="/blog/delPicture/{{  $more->id  }}"><input type="submit" value="Удалить фото"></a></p>
+<form enctype="multipart/form-data" action="/blog/edit/{{ $more->id }}" method="post">
+{{ csrf_field() }}
+<p><input type="hidden" name="MAX_FILE_SIZE" value="9024000"></p>
+<p>Загрузить фото: <input name="picture" type="file" accept="image/*"></p>
+<p>Тема: <textarea rows="3" cols="45" wrap="soft" name="topic" required>{{ $more->topic }}</textarea></p>
+<p>Текст: <textarea rows="10" cols="45" wrap="soft" name="tell" required>{{ $more->tell }}</textarea></p>
+<p><input type="submit"></p>
+</form>
+</div>
+             
               <div class="col-xs-12 col-sm-10 blog-content">
                 <h3>Комментарии</h3>
 
@@ -111,6 +133,18 @@
     </div>
   </section>
   <!--/#blog-->
+
+<script>
+$('.edit').hide();
+$(document).ready(function(){
+    $('#edit').click(function() {
+        $('.edit').show();
+        return false;
+    })
+
+});
+    
+</script>
 
 <script>
 $(document).ready(function(){
