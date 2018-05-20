@@ -25,7 +25,7 @@
                 <div class="entry-meta">
                   <span id="publish_date">{{ $more->created_at }}</span>
 @can('before', App\Models\BlogModel::class)                  
-                  <span><i class="fa fa-user"></i> <a href="/blog/edit/{{ $more->id }}">Изменить</a></span>
+                  <span><i class="fa fa-user"></i> <a id="edit1" href="/blog/edit/{{ $more->id }}">Изменить</a></span>
                   <span><i class="fa fa-user"></i> <a href="/blog/del/{{ $more->id }}">Удалить</a></span>
 @endcan                  
                   <span><i class="fa fa-user"></i> <a href="#">Николай</a></span>
@@ -41,9 +41,8 @@
                 <h4>{{ $more->topic }}</h4>
                 <p>{{ $more->tell }}</p>
 @can('before', App\Models\BlogModel::class)                
-                <a class="btn btn-primary readmore" id="edit" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary readmore" id="edit2" href="/blog/edit/{{ $more->id }}">Редактировать <i class="fa fa-angle-right"></i></a>
 @endcan                
-              </div>
 @endif
 
 <div class="edit">
@@ -66,7 +65,7 @@
 <p><input type="submit"></p>
 </form>
 </div>
-             
+              </div>
               <div class="col-xs-12 col-sm-10 blog-content">
                 <h3>Комментарии</h3>
 
@@ -137,7 +136,7 @@
 <script>
 $('.edit').hide();
 $(document).ready(function(){
-    $('#edit').click(function() {
+    $('#edit1, #edit2').click(function() {
         $('.edit').show();
         return false;
     })
